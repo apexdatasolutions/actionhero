@@ -15,13 +15,12 @@ npm-debug.log
 # OS-specific wierdness
 .DS_Store
 
+# Site
+site/build/*
+
 # Redis
 dump.rdb
 cache.dump
-
-# Jekyll Site
-_site/*
-docs/_site/*
 
 # Editor-specific
 /nbproject/*

@@ -104,9 +104,9 @@ actionhero.prototype.initialize = function(params, callback){
           });
 
           if(typeof self.initializers[initializer].initialize === 'function'){
-            if(typeof self.api.log === 'function'){ self.api.log('loading initializer: ' + initializer, 'trace', file); }
+            if(typeof self.api.log === 'function'){ self.api.log('loading initializer: ' + initializer, 'debug', file); }
             self.initializers[initializer].initialize(self.api, function(err){
-              try{ self.api.log('loaded initializer: ' + initializer, 'trace', file); }catch(e){ }
+              try{ self.api.log('loaded initializer: ' + initializer, 'debug', file); }catch(e){ }
               next(err);
             });
           }else{
@@ -207,7 +207,7 @@ actionhero.prototype.start = function(params, callback){
 
     self.startInitializers.push(function finalStartInitializer(){
       self.api.bootTime = new Date().getTime();
-      self.api.log('*** Server Started @ ' + self.api.utils.sqlDateTime() + ' ***', 'notice');
+      self.api.log('*** Server Started @ ' + new Date() + ' ***', 'notice');
       callback(null, self.api);
     });
 
