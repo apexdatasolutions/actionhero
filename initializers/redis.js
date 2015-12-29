@@ -19,7 +19,7 @@ module.exports = {
 
     var redisPackage = require(api.config.redis.package);
     if(api.config.redis.package === 'fakeredis'){
-      api.log('running with fakeredis', 'warning');
+      api.log(api.utils.t('Running In-Mem Queue'), 'warning');
       redisPackage.fast = true;
     }
       
@@ -182,7 +182,7 @@ module.exports = {
 
     api.redis.initialize(function(){
       api.redis.subscribe(function(){
-        api.redis.doCluster('api.log', ['actionhero member ' + api.id + ' has joined the cluster'], null, null);
+        api.redis.doCluster('api.log', [api.utils.t('Member {{id}} Joined Cluster', {id: api.id})], null, null);
         process.nextTick(next);
       });
     });
@@ -199,7 +199,7 @@ module.exports = {
       delete api.redis.clusterCallbakTimeouts[i]
       delete api.redis.clusterCallbaks[i];
     }
-    api.redis.doCluster('api.log', ['actionhero member ' + api.id + ' has left the cluster'], null, null);
+    api.redis.doCluster('api.log', [api.utils.t("Member {{id}} Left Cluster", {id: api.id})], null, null);
     
     process.nextTick(function(){
       api.redis.subscriber.unsubscribe();

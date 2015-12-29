@@ -62,8 +62,10 @@ actionhero.prototype.initialize = function(params, callback){
 
   // we need to load the config first
   [
+    path.resolve( __dirname + '/initializers/' + 'locales.js'),
     path.resolve( __dirname + '/initializers/' + 'utils.js'        ),
     path.resolve( __dirname + '/initializers/' + 'configLoader.js' ),
+
   ].forEach(function(file){
     var filename = file.replace(/^.*[\\\/]/, '');
     var initializer = filename.split('.')[0];
@@ -207,7 +209,7 @@ actionhero.prototype.start = function(params, callback){
 
     self.startInitializers.push(function finalStartInitializer(){
       self.api.bootTime = new Date().getTime();
-      self.api.log('*** Server Started @ ' + new Date() + ' ***', 'notice');
+      self.api.log(self.api.utils.t('Server Started At {{date}}', {date: new Date() }), 'notice');
       callback(null, self.api);
     });
 
@@ -232,7 +234,7 @@ actionhero.prototype.stop = function(callback){
     self.api.running = false;
     self.api.initialized = false;
 
-    self.api.log('Shutting down open servers and stopping task processing', 'alert');
+    self.api.log(self.api.utils.t('Server Shutting Down'), 'alert');
 
     if(self.stopInitializers[(self.stopInitializers.length -1)].name === 'finalStopInitializer'){
       self.stopInitializers.pop();
@@ -241,7 +243,7 @@ actionhero.prototype.stop = function(callback){
     self.stopInitializers.push(function finalStopInitializer(){
       self.api.unWatchAllFiles();
       self.api.pids.clearPidFile();
-      self.api.log('The actionhero has been stopped', 'alert');
+      self.api.log(self.api.utils.t('Server Stopped'), 'alert');
       self.api.log('***', 'debug');
       delete self.api.shuttingDown;
       process.nextTick(function(){
@@ -254,7 +256,7 @@ actionhero.prototype.stop = function(callback){
   } else if(self.api.shuttingDown === true){
     // double sigterm; ignore it
   } else {
-    self.api.log('Cannot shut down actionhero, not running', 'error');
+    self.api.log(self.api.utils.t("Server Can't Shut Down, Not Running"), 'error');
     if(typeof callback === 'function'){ callback(null, self.api) }
   }
 };
@@ -268,14 +270,14 @@ actionhero.prototype.restart = function(callback){
       if(err){ self.api.log(err, 'error'); }
       self.start(self.startingParams, function(err){
         if(err){ self.api.log(err, 'error'); }
-        self.api.log('*** actionhero restarted ***', 'info');
+        self.api.log(self.api.utils.t('Server Restarted'), 'info');
         if(typeof callback === 'function'){ callback(null, self.api) }
       });
     });
   } else {
     self.start(self.startingParams, function(err){
       if(err){ self.api.log(err, 'error'); }
-      self.api.log('*** actionhero restarted ***', 'info');
+      self.api.log(self.api.utils.t('Server Restarted'), 'info');
       if(typeof callback === 'function'){ callback(null, self.api) }
     });
   }

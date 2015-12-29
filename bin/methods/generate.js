@@ -23,6 +23,7 @@ exports.generate = function(binary, next){
     actionStatus         : '/actions/status.js',
     actionDocumentation  : '/actions/showDocumentation.js',
     gruntfile            : '/bin/templates/gruntfile.js',
+    englishLocaleFile    : '/locales/en.json',
     publicIndex          : '/public/index.html',
     publicChat           : '/public/chat.html',
     publicLogo           : '/public/logo/actionhero.png',
@@ -62,7 +63,7 @@ exports.generate = function(binary, next){
 
   //////// LOGIC ////////
 
-  binary.log('Generating a new actionhero project...');
+  binary.log('Generating a new project...');
 
   // make directories
   [
@@ -72,6 +73,7 @@ exports.generate = function(binary, next){
     '/config/servers',
     '/config/plugins',
     '/initializers',
+    '/locales',
     '/log',
     '/servers',
     '/public',
@@ -99,6 +101,7 @@ exports.generate = function(binary, next){
     '/package.json'                                 : 'packageJson',
     '/actions/status.js'                            : 'actionStatus',
     '/actions/showDocumentation.js'                 : 'actionDocumentation',
+    '/locales/en.json'                                : 'englishLocaleFile',
     '/public/index.html'                            : 'publicIndex',
     '/public/chat.html'                             : 'publicChat',
     '/public/css/actionhero.css'                    : 'publicCss',

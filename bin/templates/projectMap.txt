@@ -16,6 +16,9 @@
 |- initializers
 |-- (any additional initializers you want)
 |
+|- locales
+|-- (default localized strings per language, e.g., en.json)
+|
 |- log
 |-- (default location for logs)
 |

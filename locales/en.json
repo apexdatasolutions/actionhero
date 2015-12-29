@@ -1,0 +1,12 @@
+{
+	"Server Starting": "*** Starting the ActionHero Server ***",
+	"Server Started At {{date}}": "*** ActionHero Server Started @ {{date}} ***",
+	"Server Restarted": "*** ActionHero Server Restarted ***",
+	"Server Stopped": "The ActionHero Server has been stopped.",
+	"Server Shutting Down": "Shutting down open servers and stopping task processing",
+	"Server Can't Shut Down, Not Running": "Cannot shut down ActionHero, not running",
+	"Logger Loaded": "Logger Loaded",
+	"Running In-Mem Queue": "Running an in-memory (i.e., non-durable) Queue",
+	"Member {{id}} Left Cluster": "ActionHero member {{id}} left the cluster",
+	"Member {{id}} Joined Cluster": "ActionHero member {{id}} joined the cluster"
+}

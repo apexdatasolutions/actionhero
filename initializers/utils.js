@@ -201,7 +201,11 @@ module.exports = {
         host = addr
       }
       return {host: host, port: parseInt(port,10)}
-    }
+    };
+
+    api.utils.t = function(key,obj) {
+      return api.locales.__(key,obj);
+    };
 
     next();
   }
