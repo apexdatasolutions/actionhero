@@ -13,13 +13,14 @@ module.exports = {
     } else if(!api.config.general.id){
       var externalIP = api.utils.getExternalIPAddress();
       if(externalIP === false){
-        var message = ' * Error fetching this hosts external IP address; setting id base to \'actionhero\''
+        var id_base = api.utils.t("ID Base");
+        var message = api.utils.t("Setting ID Base to {{id_base}}", {id_base: id_base});
         try {
           api.log(message, 'crit');
         } catch(e){
           console.log(message);
         }
-        externalIP = 'actionhero';
+        externalIP = id_base;
       }
 
       api.id = externalIP;
@@ -34,7 +35,7 @@ module.exports = {
   },
 
   start: function(api, next){
-    api.log('server ID: ' + api.id, 'notice');
+    api.log(api.utils.t('Server ID: ') + api.id, 'notice');
     next();
   }
-}
+};

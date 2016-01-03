@@ -107,8 +107,8 @@ module.exports = {
         });
       }
 
-    }
+    };
 
     next();
   }
-}
+};

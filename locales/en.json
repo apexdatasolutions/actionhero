@@ -1,5 +1,8 @@
 {
-	"Server Starting": "*** Starting the ActionHero Server ***",
+	"ID Base": "actionhero",
+    "Setting ID Base to {{id_base}}":" * Error fetching this hosts external IP address; setting id base to '{{id_base}}'",
+	"Server ID: ": "server ID: ",
+    "Server Starting": "*** Starting the ActionHero Server ***",
 	"Server Started At {{date}}": "*** ActionHero Server Started @ {{date}} ***",
 	"Server Restarted": "*** ActionHero Server Restarted ***",
 	"Server Stopped": "The ActionHero Server has been stopped.",
